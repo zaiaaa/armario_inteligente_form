@@ -1,0 +1,24 @@
+.navbar{
+    background-color: #0D0D0D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 108px;
+    
+    position: fixed;     /* Fixa no topo */
+    top: 0;              /* Gruda no topo da tela */
+    left: 0;             /* Garante que fique colada na esquerda também */
+    z-index: 1000;       /* Garante que fique acima de outros elementos */
+}
+
+.navbar h3{
+    font-size: 28px;
+    color: #FF0000;
+    font: bold !important;
+}
+
+.navbar img{
+    width: 230px;
+    height: 61px;
+}
