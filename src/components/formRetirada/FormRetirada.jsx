@@ -16,7 +16,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-function FormRetirada({ aoAdicionar, aoRevisar }) {
+function FormRetirada({ aoRevisar }) {
   const [numRetiradas, setNumRetiradas] = useState(1);
   const navigate = useNavigate();
 
@@ -69,7 +69,6 @@ function FormRetirada({ aoAdicionar, aoRevisar }) {
             });
           }
 
-          aoAdicionar(lockouts);
           aoRevisar(lockouts);
         }}
       >
