@@ -2,17 +2,43 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { Box, Button, Text, Flex, Avatar } from '@chakra-ui/react'
 import { useState } from 'react'
 import { NavBar } from '../../components/NavBar/NavBar'
+import { Api } from '../../services/api'
 
 function RevisaoRetirada() {
   const location = useLocation()
   const navigate = useNavigate()
 
   const values = location.state?.values
+  const usuario = location.state?.usuario
 
   console.log(values)
+  console.log(usuario)
 
-  const enviarTodos = () => {
-    console.log('Enviando lockouts:', values)
+
+  const enviarTodos = async () => {
+    try {
+    const requisicoes = values.map((lockout) =>
+      Api.post("/status_abertura/retirada", {
+        UID: usuario.UID,
+        tag: lockout.tag,
+        status: "retirado",
+        local: lockout.local,
+      })
+    );
+
+    await Promise.all(requisicoes);
+
+    console.log('Enviados com sucesso');
+    navigate("/retirada/sucesso"); // ou qualquer redirecionamento desejado
+  } catch (error) {
+    navigate("/retirada/erro", {state: {error}}); // ou qualquer redirecionamento desejado
+
+    console.error("Erro ao enviar lockouts:", error.message);
+  }
+
+    
+    // console.log('Enviando lockouts:', values)
+    // console.log('Por:', usuario.UID)
     // axios.post(...) etc.
   }
 
@@ -20,7 +46,7 @@ function RevisaoRetirada() {
     <>
       <NavBar />
       <div className='content'>
-        <p>Olá <span className='colaborador'>João Pedro!</span> Seja bem-vindo ao sistema de retirada de lockouts!</p>
+        <p>Olá <span className='colaborador'>{usuario.nome} ({usuario.id_colaborador})</span> Seja bem-vindo ao sistema de retirada de lockouts!</p>
 
         <p style={{ marginTop: "30px" }}>
           <span className='colaborador'>Revise </span> e <span className='colaborador'>confirme</span> com <span className='colaborador'>atenção</span> os lockouts que serão retirados.
@@ -43,7 +69,7 @@ function RevisaoRetirada() {
 
         <Flex justify="space-between" mt={6} ml={50} mr={50}>
           <Button colorScheme="yellow" onClick={() => navigate(-1)}>Voltar</Button>
-          <Button colorScheme="green" onClick={enviarTodos}>Enviar</Button>
+          <Button isLoading colorScheme="green" onClick={enviarTodos}>Enviar</Button>
         </Flex>
       </div>
     </>
