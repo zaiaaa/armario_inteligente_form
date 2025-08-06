@@ -6,6 +6,9 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { Sucesso } from './pages/Sucesso/Sucesso'
 import { Erro } from './pages/Erro/Erro'
 import {NaoAutorizado} from './pages/NaoAutorizado/NaoAutorizado'
+import { Devolucao } from "./pages/Devolucao/Devolucao";
+import { RevisaoDevolucao } from "./pages/RevisaoDevolucao/RevisaoDevolucao";
+
 
 const theme = extendTheme({
   fonts: {
@@ -28,6 +31,13 @@ function App() {
             <Route path='/retirada/revisao' element={<RevisaoRetirada />}/>
             <Route path='/retirada/sucesso' element={<Sucesso />}/>
             <Route path='/retirada/erro' element={<Erro />}/>
+
+            <Route path='/devolucao' element={<Devolucao />}/>
+            <Route path='/devolucao/revisao' element={<RevisaoDevolucao />}/>
+            <Route path='/devolucao/sucesso' element={<Sucesso />}/>
+            <Route path='/devolucao/erro' element={<Erro />}/>
+
+
             <Route path='/nao-autorizado' element={<NaoAutorizado />}/>
           </Routes>
         </ChakraProvider>
