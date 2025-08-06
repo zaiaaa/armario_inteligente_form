@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import {Retirada} from './pages/Retirada/Retirada'
 import { RevisaoRetirada } from './pages/RevisaoRetirada/RevisaoRetirada'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { Sucesso } from './pages/Sucesso/Sucesso'
+import { Erro } from './pages/Erro/Erro'
+import {NaoAutorizado} from './pages/NaoAutorizado/NaoAutorizado'
 
 const theme = extendTheme({
   fonts: {
@@ -23,6 +26,9 @@ function App() {
           <Routes>
             <Route path='/retirada' element={<Retirada />}/>
             <Route path='/retirada/revisao' element={<RevisaoRetirada />}/>
+            <Route path='/retirada/sucesso' element={<Sucesso />}/>
+            <Route path='/retirada/erro' element={<Erro />}/>
+            <Route path='/nao-autorizado' element={<NaoAutorizado />}/>
           </Routes>
         </ChakraProvider>
       </Router>
