@@ -16,7 +16,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-function FormRetirada({ aoRevisar }) {
+function FormRetirada({ aoRevisar, lockouts = [] }) {
   const [numRetiradas, setNumRetiradas] = useState(1);
   const navigate = useNavigate();
 
@@ -87,9 +87,12 @@ function FormRetirada({ aoRevisar }) {
                     >
                       <FormLabel>Tag</FormLabel>
                       <Select {...field} placeholder="Selecione o lockout" color="#000">
-                        <option disabled value="S-01">S-01 - em uso</option>
-                        <option value="S-02">S-02</option>
-                        <option value="S-03">S-03</option>
+                        {
+                          lockouts.map((lockout, index) => (
+                            <option disabled={lockout.status == "retirado"} value={lockout.tag}>{lockout.tag} {lockout.status == "retirado" ? "- Já em uso!" : ""}</option>
+
+                          ))
+                        }
                       </Select>
                       <FormErrorMessage>{form.errors[`tag_${i}`]}</FormErrorMessage>
                     </FormControl>
