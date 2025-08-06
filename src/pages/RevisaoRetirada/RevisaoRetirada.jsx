@@ -7,6 +7,7 @@ import { Api } from '../../services/api'
 function RevisaoRetirada() {
   const location = useLocation()
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false) // ← loading state
 
   const values = location.state?.values
   const usuario = location.state?.usuario
@@ -17,6 +18,7 @@ function RevisaoRetirada() {
 
   const enviarTodos = async () => {
     try {
+    setLoading(true) // ← start loading
     const requisicoes = values.map((lockout) =>
       Api.post("/status_abertura/retirada", {
         UID: usuario.UID,
@@ -34,7 +36,9 @@ function RevisaoRetirada() {
     navigate("/retirada/erro", {state: {error}}); // ou qualquer redirecionamento desejado
 
     console.error("Erro ao enviar lockouts:", error.message);
-  }
+  } finally {
+      setLoading(false) // ← stop loading (optional if navigating away)
+    }
 
     
     // console.log('Enviando lockouts:', values)
@@ -69,7 +73,7 @@ function RevisaoRetirada() {
 
         <Flex justify="space-between" mt={6} ml={50} mr={50}>
           <Button colorScheme="yellow" onClick={() => navigate(-1)}>Voltar</Button>
-          <Button isLoading colorScheme="green" onClick={enviarTodos}>Enviar</Button>
+          <Button isLoading={loading} colorScheme="green" onClick={enviarTodos}>Enviar</Button>
         </Flex>
       </div>
     </>
