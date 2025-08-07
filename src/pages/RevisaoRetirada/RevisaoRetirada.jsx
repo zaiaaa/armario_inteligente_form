@@ -48,7 +48,7 @@ function RevisaoRetirada() {
 
   return (
     <>
-      <NavBar />
+      <NavBar nomePagina='RETIRADA' />
       <div className='content'>
         <p>Olá <span className='colaborador'>{usuario.nome} ({usuario.id_colaborador})</span> Seja bem-vindo ao sistema de retirada de lockouts!</p>
 
