@@ -7,12 +7,15 @@ import "./retirada.css"
 import { Button } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { Api } from '../../services/api'
+import { Loading } from '../../components/Loading/loading'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 const Retirada = () => {
   const navigate = useNavigate()
 
   const [usuario, setUsuario] = useState({})
   const [lockouts, setLockouts] = useState([])
+  const [loading, setLoading] = useState(true)
 
 
   const irParaRevisao = (values) => {
@@ -23,7 +26,11 @@ const Retirada = () => {
     const handleGetUsuario = async () => {
             try {
                 const fetch = await Api.get('/status_abertura/status')
-                setUsuario(fetch.data)
+                if(fetch.data.acao == "devolucao"){
+                  navigate("/devolucao")
+                }else{
+                  setUsuario(fetch.data)
+                }
 
             } catch (e) {
               console.log(e)
@@ -34,6 +41,7 @@ const Retirada = () => {
       try {
           const fetch = await Api.get('/status_abertura')
           setLockouts(fetch.data)
+        setLoading(false)
 
       } catch (e) {
         console.log(e)
@@ -42,7 +50,7 @@ const Retirada = () => {
     }
       handleGetUsuario()
       handleGetLockouts()
-    
+
   }, [])
 
   // useEffect(() => {
@@ -59,10 +67,21 @@ const Retirada = () => {
 
   return (
     <>
-      <NavBar/>
+      <NavBar nomePagina='RETIRADA'/>
       <div className="content">
-        <p>Olá <span className='colaborador'>{usuario.nome} ({usuario.id_colaborador})</span> Seja bem-vindo ao sistema de retirada de lockouts!</p>
-        <FormRetirada aoRevisar={ irParaRevisao } lockouts={lockouts}/>
+        {
+          loading === true ?
+          (
+            <Loading />
+          )
+          :
+          (
+          <>
+            <p>Olá <span className='colaborador'>{usuario.nome} ({usuario.id_colaborador})</span> Seja bem-vindo ao sistema de retirada de lockouts!</p>
+            <FormRetirada aoRevisar={ irParaRevisao } lockouts={lockouts}/>
+          </>
+          )
+        }
       </div>
     </>
   )

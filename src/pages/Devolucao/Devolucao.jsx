@@ -7,13 +7,14 @@ import "./devolucao.css"
 import { Button } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { Api } from '../../services/api'
+import { Loading } from '../../components/Loading/loading'
 
 const Devolucao = () => {
   const navigate = useNavigate()
 
   const [usuario, setUsuario] = useState({})
   const [lockouts, setLockouts] = useState([])
-
+  const [loading, setLoading] = useState(true)
 
   const irParaRevisao = (values) => {
     navigate('/devolucao/revisao', { state: { values, usuario } })
@@ -21,19 +22,24 @@ const Devolucao = () => {
 
   useEffect(() => {
     const handleGetUsuario = async () => {
-            try {
-                const fetch = await Api.get('/status_abertura/status')
-                setUsuario(fetch.data)
+      try {
+          const fetch = await Api.get('/status_abertura/status')
+          if(fetch.data.acao == "retirada"){
+            navigate("/retirada")
+          }else{
+            setUsuario(fetch.data)
+          }
 
-            } catch (e) {
-              console.log(e)
-            }
-        }
+      } catch (e) {
+        console.log(e)
+      }
+    }
       
     const handleGetLockouts = async() => {
       try {
           const fetch = await Api.get('/status_abertura')
           setLockouts(fetch.data)
+          setLoading(false)
 
       } catch (e) {
         console.log(e)
@@ -59,10 +65,19 @@ const Devolucao = () => {
 
   return (
     <>
-      <NavBar/>
+      <NavBar nomePagina='DEVOLUÇÃO'/>
       <div className="content">
-        <p>Olá <span className='colaborador'>{usuario.nome} ({usuario.id_colaborador})</span> Seja bem-vindo ao sistema de retirada de lockouts!</p>
-        <FormDevolucao aoRevisar={ irParaRevisao } lockouts={lockouts}/>
+        {
+          loading === true ? (
+            <Loading />
+          )
+          :(
+          <>
+            <p>Olá <span className='colaborador'>{usuario.nome} ({usuario.id_colaborador})</span> Seja bem-vindo ao sistema de devolução de lockouts!</p>
+            <FormDevolucao aoRevisar={ irParaRevisao } lockouts={lockouts}/>
+          </>            
+          )
+        }
       </div>
     </>
   )
