@@ -88,7 +88,7 @@ function FormDevolucao({ aoRevisar, lockouts = [] }) {
                       <Select {...field} placeholder="Selecione o lockout" color="#000">
                         {
                           lockouts.map((lockout, index) => (
-                            <option disabled={lockout.status == "devolvido"} value={lockout.tag}>{lockout.tag} {lockout.status == "retirado" ? "- Já devolvido!" : ""}</option>
+                            <option disabled={lockout.status == "devolvido"} value={lockout.tag}>{lockout.tag} {lockout.status == "devolvido" ? "- Já devolvido!" : ""}</option>
 
                           ))
                         }
