@@ -48,7 +48,7 @@ function RevisaoDevolucao() {
 
   return (
     <>
-      <NavBar />
+      <NavBar nomePagina='DEVOLUÇÃO'/>
       <div className='content'>
         <p>Olá <span className='colaborador'>{usuario.nome} ({usuario.id_colaborador})</span> Seja bem-vindo ao sistema de devolução de lockouts!</p>
 
@@ -60,7 +60,7 @@ function RevisaoDevolucao() {
             values.map((item, i) => (
                 <Box key={i} p={4} border="1px solid gray" borderRadius="md" mt={4} mr={4} ml={4} textAlign={"left"}>
                         <Text textAlign={'left'} fontSize={"21px"}><strong>Tag:</strong> <span style={{ color: 'red' }}>{item?.tag}</span></Text>
-                        <Text textAlign={'left'}fontSize={"21px"} mt={2}><strong>Local:</strong> <span style={{ color: 'red' }}>{item?.local}</span></Text>
+                        <Text textAlign={'left'}fontSize={"21px"} mt={2}><strong>Local:</strong> <span style={{ color: 'red' }}>Devolvido</span></Text>
                 </Box>
 
             ))
