@@ -4,7 +4,7 @@ import { Card, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, Butto
 import lockoutDisponivel from "../../assets/lockout_disponivel.png"
 import lockoutIndisponivel from "../../assets/lockout_indisponivel.png"
 import { Api } from '../../services/api'
-import { Loading } from '../../components/Loading/loading'
+import { Loading } from '../../components/Loading/Loading'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
