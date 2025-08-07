@@ -1,5 +1,5 @@
 import React from 'react'
-import "./NaoAutorizado.css"
+import "./naoAutorizado.css"
 import { NavBar } from '../../components/NavBar/NavBar'
 import cracha from "../../assets/cracha.png"
 
