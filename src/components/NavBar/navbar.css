@@ -22,3 +22,21 @@
     width: 230px;
     height: 61px;
 }
+
+
+@media (max-width: 420px) {
+    .navbar h3{
+        font-size: 23px;
+        color: #FF0000;
+        font: bold !important;
+    }
+}
+
+
+@media (max-width: 350px) {
+    .navbar h3{
+        font-size: 18px;
+        color: #FF0000;
+        font: bold !important;
+    }
+}
