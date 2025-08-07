@@ -89,7 +89,7 @@ function FormRetirada({ aoRevisar, lockouts = [] }) {
                       <Select {...field} placeholder="Selecione o lockout" color="#000">
                         {
                           lockouts.map((lockout, index) => (
-                            <option disabled={lockout.status == "retirado"} value={lockout.tag}>{lockout.tag} {lockout.status == "retirado" ? "- Já em uso!" : ""}</option>
+                            <option key={index} disabled={lockout.status == "retirado"} value={lockout.tag}>{lockout.tag} {lockout.status == "retirado" ? "- Já em uso!" : ""}</option>
 
                           ))
                         }
