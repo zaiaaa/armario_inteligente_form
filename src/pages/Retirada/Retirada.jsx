@@ -7,7 +7,7 @@ import "./retirada.css"
 import { Button } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { Api } from '../../services/api'
-import { Loading } from '../../components/Loading/loading'
+import { Loading } from '../../components/Loading/Loading'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 const Retirada = () => {
