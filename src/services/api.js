@@ -5,6 +5,3 @@ const Api = axios.create({
 })
 
 export {Api}
-
-
-
