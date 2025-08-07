@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import {NavBar} from '../../components/NavBar/NavBar'
 import { useState } from 'react'
-import { FormRetirada } from '../../components/formRetirada/formRetirada'
+import { FormRetirada } from '../../components/formRetirada/FormRetirada'
 import { RevisaoRetirada } from '../RevisaoRetirada/RevisaoRetirada'
 import "./retirada.css"
 import { Button } from '@chakra-ui/react'
