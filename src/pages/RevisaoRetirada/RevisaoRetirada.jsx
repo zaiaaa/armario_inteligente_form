@@ -3,14 +3,21 @@ import { Box, Button, Text, Flex, Avatar } from '@chakra-ui/react'
 import { useState } from 'react'
 import { NavBar } from '../../components/NavBar/NavBar'
 import { Api } from '../../services/api'
+import { Spinner } from '@chakra-ui/react'
+
 
 function RevisaoRetirada() {
   const location = useLocation()
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false) // ← loading state
 
-  const values = location.state?.values
-  const usuario = location.state?.usuario
+  const values = location.state?.values|| []
+  const usuario = location.state?.usuario|| {}
+
+  if (!values.length) {
+    return <Spinner color="red.500" size="xl" />;
+  }
+
 
   console.log(values)
   console.log(usuario)
