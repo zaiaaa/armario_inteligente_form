@@ -8,6 +8,7 @@ import { Loading } from '../../components/Loading/Loading'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
+import { formataData } from '../../services/formataData'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
@@ -70,7 +71,7 @@ const VisualizarLockouts = () => {
                                 </Text>
                                 {lockout.status == "retirado" ? <Divider borderColor={"#000"} /> : ""}
                                 <Text color={"#FF0000"}>
-                                    {lockout.status == "retirado" ? `Data: ${dayjs.utc(lockout.hora_retirada).tz("America/Sao_Paulo").format('DD/MM/YYYY HH:mm')}` : ""}
+                                    {lockout.status == "retirado" ? `Data: ${formataData(lockout.hora_retirada)}` : ""}
                                 </Text>
                                 {lockout.status == "retirado" ? <Divider borderColor={"#000"} /> : ""}
                                 <Text color={"#FF0000"}>
