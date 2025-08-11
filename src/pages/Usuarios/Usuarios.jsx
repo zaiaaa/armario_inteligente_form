@@ -23,6 +23,8 @@
         getUsuarios()
     }, []);
 
+      const semCadastro = usuarios.filter(u => !u.id_colaborador)
+
     
         return (
         <>
@@ -35,7 +37,12 @@
 
                 :
                 <>
+                {
+                semCadastro.length > 0 ? (
                     <Text fontSize={"20px"} color={"red"} mb={4}>Usuários sem Cadastro: </Text>
+
+                ):
+                ""}    
                     
                 {    usuarios.map((usuario, index) => (         
                         !usuario.id_colaborador ?       
