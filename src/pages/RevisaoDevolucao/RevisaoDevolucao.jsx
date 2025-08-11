@@ -9,8 +9,8 @@ function RevisaoDevolucao() {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false) // ← loading state
 
-  const values = location.state?.values
-  const usuario = location.state?.usuario
+  const values = location.state?.values || []
+  const usuario = location.state?.usuario || {}
 
   console.log(values)
   console.log(usuario)

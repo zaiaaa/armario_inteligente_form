@@ -9,6 +9,8 @@ import {NaoAutorizado} from './pages/NaoAutorizado/NaoAutorizado'
 import { Devolucao } from "./pages/Devolucao/Devolucao";
 import { RevisaoDevolucao } from "./pages/RevisaoDevolucao/RevisaoDevolucao";
 import { VisualizarLockouts } from './pages/VisualizarLockouts/VisualizarLockouts'
+import Usuarios from './pages/Usuarios/Usuarios'
+import { CadastroUsuario } from './pages/CadastroUsuario/CadastroUsuario'
 
 
 const theme = extendTheme({
@@ -39,6 +41,10 @@ function App() {
             <Route path='/devolucao/erro' element={<Erro />}/>
 
             <Route path='/visualizar' element={<VisualizarLockouts />}/>
+
+            <Route path='/usuarios' element={<Usuarios />}/>
+            <Route path='/usuarios/:uid' element={<CadastroUsuario />}/>
+            
 
 
             <Route path='/nao-autorizado' element={<NaoAutorizado />}/>
