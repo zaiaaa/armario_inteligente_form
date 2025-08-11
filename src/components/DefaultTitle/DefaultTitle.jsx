@@ -1,5 +1,5 @@
 import React from 'react'
-import "./DefaultTitle.css"
+import "./defaultTitle.css"
 
 
 const DefaultTitle = ({usuario = {}, type}) => {
