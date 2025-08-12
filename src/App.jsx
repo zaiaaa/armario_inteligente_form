@@ -12,6 +12,7 @@ import { VisualizarLockouts } from './pages/VisualizarLockouts/VisualizarLockout
 import Usuarios from './pages/Usuarios/Usuarios'
 import { CadastroUsuario } from './pages/CadastroUsuario/CadastroUsuario'
 import { CadastroLockout } from './pages/cadastroLockout/CadastroLockout'
+import {EditarLockout} from './pages/EditarLockout/EditarLockout'
 
 
 const theme = extendTheme({
@@ -43,6 +44,7 @@ function App() {
 
             <Route path='/lockouts' element={<VisualizarLockouts />}/>
             <Route path='/lockouts/cadastro' element={<CadastroLockout />}/>
+            <Route path='/lockouts/editar/:tag' element={<EditarLockout />}/>
 
             <Route path='/usuarios' element={<Usuarios />}/>
             <Route path='/usuarios/:uid' element={<CadastroUsuario />}/>
