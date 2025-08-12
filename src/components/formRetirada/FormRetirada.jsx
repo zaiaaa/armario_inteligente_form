@@ -16,7 +16,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-function FormRetirada({ aoRevisar, lockouts = [] }) {
+function FormRetirada({ aoRevisar, lockouts = [], edicao = false, tagEdicao = "" }) {
   const [numRetiradas, setNumRetiradas] = useState(1);
   const navigate = useNavigate();
 
@@ -30,8 +30,9 @@ function FormRetirada({ aoRevisar, lockouts = [] }) {
 
   const gerarValoresIniciais = () => {
     const iniciais = {};
+    const qtd = edicao ? 1 : numRetiradas; // fixa 1 se for edição
     for (let i = 0; i < numRetiradas; i++) {
-      iniciais[`tag_${i}`] = '';
+      iniciais[`tag_${i}`] = edicao ? tagEdicao : '';
       iniciais[`local_${i}`] = '';
     }
     return iniciais;
@@ -39,7 +40,7 @@ function FormRetirada({ aoRevisar, lockouts = [] }) {
 
   return (
     <>
-      <FormControl mb={4} ml={4} mt={4} width={"20rem"}>
+      <FormControl mb={4} ml={4} mt={4} width={"20rem"} visibility={edicao ? "hidden" : ""}>
         <FormLabel>Nº de lockouts retirados</FormLabel>
         <NumberInput
           max={50}
@@ -60,9 +61,10 @@ function FormRetirada({ aoRevisar, lockouts = [] }) {
         enableReinitialize
         initialValues={gerarValoresIniciais()}
         onSubmit={(values) => {
+          const qtd = edicao ? 1 : numRetiradas;
           const lockouts = [];
 
-          for (let i = 0; i < numRetiradas; i++) {
+          for (let i = 0; i < qtd; i++) {
             lockouts.push({
               tag: values[`tag_${i}`],
               local: values[`local_${i}`],
@@ -72,11 +74,14 @@ function FormRetirada({ aoRevisar, lockouts = [] }) {
           aoRevisar(lockouts);
         }}
       >
-        {(props) => (
+        {(props) => {
+          const qtd = edicao ? 1 : numRetiradas;
+          return (
+          
           <Form>
-            {[...Array(numRetiradas)].map((_, i) => (
+            {[...Array(qtd)].map((_, i) => (
               <Box key={i} border="1px solid #ccc" borderRadius={6} p={4} m={2.5}>
-                <FormLabel fontWeight="bold">Lockout {i + 1}</FormLabel>
+                <FormLabel fontWeight="bold">Lockout {!edicao ? i + 1 : "sendo editado:"}</FormLabel>
 
                 {/* Campo Select - TAG */}
                 <Field name={`tag_${i}`} validate={validarCampo}>
@@ -86,14 +91,32 @@ function FormRetirada({ aoRevisar, lockouts = [] }) {
                       mb={3}
                     >
                       <FormLabel>Tag</FormLabel>
-                      <Select {...field} placeholder="Selecione o lockout" color="#000">
-                        {
-                          lockouts.map((lockout, index) => (
-                            <option key={index} disabled={lockout.status == "retirado"} value={lockout.tag}>{lockout.tag} {lockout.status == "retirado" ? "- Já em uso!" : ""}</option>
+                      
+                      {
+                        !edicao ? (
+                          <Select {...field} isDisabled={edicao} placeholder="Selecione o lockout" color="#000">
+                            {
+                              lockouts.map((lockout, index) => (
+                                <option key={index} disabled={lockout.status == "retirado"} value={lockout.tag}>{lockout.tag} {lockout.status == "retirado" ? "- Já em uso!" : ""}</option>
 
-                          ))
-                        }
-                      </Select>
+                              ))
+                            }
+                          </Select>
+                        )
+                        :
+                        (
+                        <Input
+                          
+                          {...field}
+                          placeholder="Local de uso do Lockout"
+                          color="#000"
+                          disabled={true}
+                        />
+
+                        )
+                      }
+
+
                       <FormErrorMessage>{form.errors[`tag_${i}`]}</FormErrorMessage>
                     </FormControl>
                   )}
@@ -126,10 +149,10 @@ function FormRetirada({ aoRevisar, lockouts = [] }) {
               isLoading={props.isSubmitting}
               type="submit"
             >
-              Enviar
+              {!edicao ? "Enviar" : "Retirar Lockout!"}
             </Button>
           </Form>
-        )}
+        )}}
       </Formik>
     </>
   );
