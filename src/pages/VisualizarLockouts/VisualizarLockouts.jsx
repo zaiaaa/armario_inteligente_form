@@ -68,6 +68,7 @@ const VisualizarLockouts = () => {
                             transform: "scale(1.02)",
                             transition: "0.2s ease-in-out"
                         }}
+                        onClick={() => navigate(`/lockouts/editar/${lockout.tag}`)}
                     >
                     <CardBody>
                     <Image
