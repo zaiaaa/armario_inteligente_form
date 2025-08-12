@@ -11,6 +11,8 @@ import { RevisaoDevolucao } from "./pages/RevisaoDevolucao/RevisaoDevolucao";
 import { VisualizarLockouts } from './pages/VisualizarLockouts/VisualizarLockouts'
 import Usuarios from './pages/Usuarios/Usuarios'
 import { CadastroUsuario } from './pages/CadastroUsuario/CadastroUsuario'
+import { CadastroLockout } from './pages/cadastroLockout/CadastroLockout'
+import {EditarLockout} from './pages/EditarLockout/EditarLockout'
 
 
 const theme = extendTheme({
@@ -40,7 +42,9 @@ function App() {
             <Route path='/devolucao/sucesso' element={<Sucesso />}/>
             <Route path='/devolucao/erro' element={<Erro />}/>
 
-            <Route path='/visualizar' element={<VisualizarLockouts />}/>
+            <Route path='/lockouts' element={<VisualizarLockouts />}/>
+            <Route path='/lockouts/cadastro' element={<CadastroLockout />}/>
+            <Route path='/lockouts/editar/:tag' element={<EditarLockout />}/>
 
             <Route path='/usuarios' element={<Usuarios />}/>
             <Route path='/usuarios/:uid' element={<CadastroUsuario />}/>
