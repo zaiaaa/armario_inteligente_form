@@ -33,7 +33,7 @@ const Retirada = () => {
                 }
 
             } catch (e) {
-              console.log(e)
+              navigate("/nao-autorizado")
             }
         }
       
