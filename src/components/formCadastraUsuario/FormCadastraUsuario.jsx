@@ -7,14 +7,18 @@ import {
   Input,
   FormErrorMessage,
   Select,
-  Box
+  Box,
+  useToast
 } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import './formCadastraUsuario.css'
 import { Api } from '../../services/api'
+import { toTitleCase } from '../../services/toTitleCase'
 
 const FormCadastraUsuario = ({ uidColaborador }) => {
   const navigate = useNavigate()
+
+    const toast = useToast();
 
   function validarCampo(value) {
     let error
@@ -28,14 +32,28 @@ const FormCadastraUsuario = ({ uidColaborador }) => {
     
     try {
       await Api.put(`/usuarios/${uidColaborador}`, {
-        nome: `${values.first_name} ${values.last_name}`,
+        nome: `${toTitleCase(values.first_name)} ${toTitleCase(values.last_name)}`,
         id_colaborador: values.id_colaborador,
         setor: values.setor
       })
+      toast({
+        title: "Sucesso!",
+        description: "Usuário cadastrado com sucesso.",
+        status: "success",
+        duration: 3000,
+        isClosable: true
+      });
+
       console.log('Usuário cadastrado:', values)
       navigate("/usuarios")
     } catch (error) {
-      console.log(error)
+      toast({
+        title: "Erro ao cadastrar",
+        description: error.response?.data?.message || "Tente novamente.",
+        status: "error",
+        duration: 3000,
+        isClosable: true
+      });
     }
   
   }
