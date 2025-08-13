@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { NavBar } from '../../components/NavBar/NavBar'
 import { useNavigate, useParams } from 'react-router-dom'
 import {FormRetirada} from "../../components/formRetirada/FormRetirada"
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Text, useToast } from '@chakra-ui/react'
 import { Api } from '../../services/api'
 import { Button } from '@chakra-ui/react'
 
@@ -12,6 +12,8 @@ const EditarLockout = () => {
   const navigate = useNavigate()
   const {tag} = useParams()
   console.log(tag)
+
+  const toast = useToast()
 
   useEffect(() => {
       const handleGetLockout = async () => {
@@ -34,8 +36,23 @@ const EditarLockout = () => {
           UID: "4328F82C",
           tag: tag,
         })
-      } catch (error) {
-        console.log(error)
+
+      toast({
+        title: "Sucesso!",
+        description: "Devolução cadastrada com sucesso.",
+        status: "success",
+        duration: 3000,
+        isClosable: true
+      });
+
+      } catch (error) {      
+        toast({
+          title: "Erro na devolução!",
+          description: error.response?.data?.message,
+          status: "error",
+          duration: 3000,
+          isClosable: true
+        });
       } finally{
         setLoading(true)
         navigate("/lockouts")
@@ -51,11 +68,24 @@ const EditarLockout = () => {
           status: "retirado",
           local: values[0].local,
         })
+
+        toast({
+          title: "Sucesso!",
+          description: "Retirada cadastrada com sucesso.",
+          status: "success",
+          duration: 3000,
+          isClosable: true
+        });
                 
         navigate("/lockouts")
       } catch (error) {
-        console.log(error)
-      }
+        toast({
+          title: "Erro na retirada!",
+          description: error.response?.data?.message,
+          status: "error",
+          duration: 3000,
+          isClosable: true
+        });      }
   }
   return (
     <>
