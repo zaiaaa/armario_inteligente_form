@@ -8,8 +8,10 @@ import {
   useToast
 } from '@chakra-ui/react';
 import { Api } from '../../services/api';
+import { useNavigate } from 'react-router-dom';
 
 const FormLockouts = () => {
+  const navigate = useNavigate()
   const [tag, setTag] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,7 +33,8 @@ const FormLockouts = () => {
     setIsLoading(true); // inicia o loading
 
     try {
-      await Api.post("/status_abertura/cadastrar", { tag });
+      const tagFormatada = tag.toUpperCase()
+      await Api.post("/status_abertura/cadastrar", { tag: tagFormatada });
       toast({
         title: "Sucesso!",
         description: "Tag cadastrada com sucesso.",
@@ -40,6 +43,7 @@ const FormLockouts = () => {
         isClosable: true
       });
       setTag("");
+      navigate("/lockouts")
     } catch (error) {
       toast({
         title: "Erro ao cadastrar",
