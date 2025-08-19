@@ -10,6 +10,7 @@ import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 import { formataData } from '../../services/formataData'
 import { useNavigate } from 'react-router-dom'
+import "./visualizarLockouts.css"
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
@@ -44,7 +45,7 @@ const VisualizarLockouts = () => {
 
 
         
-        <div className="content">
+        <div className="content lockouts">
         {
             loading == true ? (
                 <Loading />
@@ -96,14 +97,7 @@ const VisualizarLockouts = () => {
             </Card>
         ))}
 
-            {/* Botão no final */}
-            <Button
-                m={6}
-                colorScheme="green"
-                onClick={() => navigate("/lockouts/cadastro")}
-            >
-                Novo Lockout
-            </Button>
+            
         </>
             )
 
@@ -111,6 +105,18 @@ const VisualizarLockouts = () => {
         }    
 
         </div>
+        {/* Botão no final */}
+            <div className="botao__div">
+                <Button
+                    m={{ base: 6, xl: 0 }}
+                    mb={{xl: 4}}
+                    className='botao'
+                    colorScheme="green"
+                    onClick={() => navigate("/lockouts/cadastro")}
+                >
+                    Novo Lockout
+                </Button>
+            </div>
     </>
   )
 }

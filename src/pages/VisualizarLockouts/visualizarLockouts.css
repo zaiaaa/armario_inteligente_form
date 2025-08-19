@@ -1,0 +1,21 @@
+.lockouts{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+@media (min-width: 1200px){
+    .botao__div{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        
+    }
+    .botao{
+        width: 80%;
+    }
+}
