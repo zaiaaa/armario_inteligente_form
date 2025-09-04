@@ -7,7 +7,7 @@ import { Acesso } from '../pages/Acesso/Acesso';
 const PrivateRoute = ({children}) => {
   //const location = useLocation()
 
-  const senha = localStorage.getItem('senha');
+  const senha = sessionStorage.getItem('senha');
     
   return senha === "ManutT05" ? children : <Acesso />
 

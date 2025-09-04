@@ -31,7 +31,7 @@ const Acesso = () => {
   }
 
   const handlePassword = async (values) => {
-    localStorage.setItem('senha', values.senha);
+    sessionStorage.setItem('senha', values.senha);
     if (values.senha !== "ManutT05") {
       toast({
         title: "Senha incorreta",
