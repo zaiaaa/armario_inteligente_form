@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {NavBar} from "../../components/NavBar/NavBar"
-import { Card, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, Button, ButtonGroup } from '@chakra-ui/react'
+import { Card, CardBody, CardFooter, Image, Stack, InputLeftElement, Heading, Text, Divider, Button, ButtonGroup, Input, InputGroup  } from '@chakra-ui/react'
 import lockoutDisponivel from "../../assets/lockout_disponivel.png"
 import lockoutIndisponivel from "../../assets/lockout_indisponivel.png"
 import { Api } from '../../services/api'
@@ -10,6 +10,7 @@ import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 import { formataData } from '../../services/formataData'
 import { useNavigate } from 'react-router-dom'
+import { FaSearch } from 'react-icons/fa'
 import "./visualizarLockouts.css"
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -19,6 +20,7 @@ dayjs.extend(timezone)
 const VisualizarLockouts = () => {
   const [lockouts, setLockouts] = useState([])
   const [loading, setLoading] = useState(true)
+  const [pesquisa, setPesquisa] = useState("") // estado para o texto digitado
   const navigate = useNavigate()
 
 
@@ -38,6 +40,13 @@ const VisualizarLockouts = () => {
 
 
   }, [])
+
+  const lockoutsFiltrados = lockouts.filter(lockout => {
+        const termo = pesquisa.toLowerCase()
+        return (
+        lockout.tag?.toLowerCase().includes(termo)
+        )
+      })
   
   return (
     <>
@@ -55,47 +64,62 @@ const VisualizarLockouts = () => {
                 : 
             (
                 <>
-                    {lockouts.map((lockout, index) => (
-                    <Card
-                        key={index}
-                        maxW='sm'
-                        ml={4}
-                        mr={4}
-                        mb={4}
-                        boxShadow="lg"
-                        border="1px solid #E2E8F0"
-                        _hover={{
-                            boxShadow: "xl",
-                            transform: "scale(1.02)",
-                            transition: "0.2s ease-in-out"
-                        }}
-                        onClick={() => navigate(`/lockouts/editar/${lockout.tag}`)}
-                    >
-                    <CardBody>
-                    <Image
-                        src={lockout.status === "devolvido" ? lockoutDisponivel : lockoutIndisponivel}
-                        alt={lockout.status === "devolvido" ? "lockout Disponível" : "lockout Indisponivel"}
-                        borderRadius='lg'
+                {/* Campo de pesquisa */}
+                    <InputGroup mb={4} w={{ base: "100%", sm: "20rem", md: "40rem", lg: "60rem" }}>
+                    <InputLeftElement pointerEvents="none">
+                        <FaSearch color="gray.400" />
+                    </InputLeftElement>
+                    <Input
+                        type="text"
+                        placeholder="Pesquisar usuário..."
+                        value={pesquisa}
+                        onChange={(e) => setPesquisa(e.target.value)}
                     />
-                    <Stack mt='6' spacing='3'>
-                        <Heading size='lg' textAlign={"center"}>TAG {lockout.tag}</Heading>
-                        <Divider borderColor={"#000"} />
-                        <Text color={lockout.status === "devolvido" ? "#61D200" : "#FF0000"}>
-                            Lockout {lockout.status === "devolvido" ? "DISPONÍVEL" : "INDISPONÍVEL"}
-                        </Text>
-                        {lockout.status === "retirado" && (
-                            <>
-                                <Text color="#FF0000">Local: {lockout.local}</Text>
-                                <Divider borderColor="#000" />
-                                <Text color="#FF0000">Data: {formataData(lockout.hora_retirada)}</Text>
-                                <Divider borderColor="#000" />
-                                <Text color="#FF0000">Retirado por: {lockout.nome}</Text>
-                            </>
-                        )}
-                    </Stack>
-                </CardBody>
-            </Card>
-        ))}
+                    </InputGroup>
+
+                    <div className='lockoutsArea'>
+                        {lockoutsFiltrados.map((lockout, index) => (
+                        <Card
+                            key={index}
+                            maxW='sm'
+                            ml={4}
+                            mr={4}
+                            mb={4}
+                            boxShadow="lg"
+                            border="1px solid #E2E8F0"
+                            _hover={{
+                                boxShadow: "xl",
+                                transform: "scale(1.02)",
+                                transition: "0.2s ease-in-out"
+                            }}
+                            onClick={() => navigate(`/lockouts/editar/${lockout.tag}`)}
+                        >
+                        <CardBody>
+                        <Image
+                            src={lockout.status === "devolvido" ? lockoutDisponivel : lockoutIndisponivel}
+                            alt={lockout.status === "devolvido" ? "lockout Disponível" : "lockout Indisponivel"}
+                            borderRadius='lg'
+                        />
+                        <Stack mt='6' spacing='3'>
+                            <Heading size='lg' textAlign={"center"}>TAG {lockout.tag}</Heading>
+                            <Divider borderColor={"#000"} />
+                            <Text color={lockout.status === "devolvido" ? "#61D200" : "#FF0000"}>
+                                Lockout {lockout.status === "devolvido" ? "DISPONÍVEL" : "INDISPONÍVEL"}
+                            </Text>
+                            {lockout.status === "retirado" && (
+                                <>
+                                    <Text color="#FF0000">Local: {lockout.local}</Text>
+                                    <Divider borderColor="#000" />
+                                    <Text color="#FF0000">Data: {formataData(lockout.hora_retirada)}</Text>
+                                    <Divider borderColor="#000" />
+                                    <Text color="#FF0000">Retirado por: {lockout.nome}</Text>
+                                </>
+                            )}
+                        </Stack>
+                    </CardBody>
+                </Card>
+            ))}
+                    </div>
 
             
         </>
