@@ -100,7 +100,12 @@ const EditarLockout = () => {
           
           <FormRetirada edicao={true} tagEdicao={tag} aoRevisar={ editarLockout } />
 
-          <Button isLoading={loading} ml={5} colorScheme='blue' onClick={devolverLockout}>Devolver Lockout!</Button>
+          <Box display={"flex"} flexDirection={"row"} gap={4} mt={"-24px"} width={"100%"}>
+            <Button isLoading={loading} ml={5} colorScheme='yellow' onClick={() => navigate("/lockouts")}>Voltar</Button>
+            <Button isLoading={loading} ml={5} colorScheme='blue' onClick={devolverLockout}>Devolver Lockout!</Button>
+          
+
+          </Box>
         </div>
     </>
   )
