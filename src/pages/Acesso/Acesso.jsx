@@ -32,16 +32,17 @@ const Acesso = () => {
 
   const handlePassword = async (values) => {
     localStorage.setItem('senha', values.senha);
-    if (!values.senha) {
+    if (values.senha !== "ManutT05") {
       toast({
-        title: "Campo obrigatório",
-        description: "Digite a tag antes de cadastrar.",
+        title: "Senha incorreta",
+        description: "Tente novamente",
         status: "warning",
         duration: 3000,
         isClosable: true
       });
       return;
     }
+    window.location.reload()
     console.log(values.senha)
   
   }
