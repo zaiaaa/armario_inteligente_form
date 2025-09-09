@@ -65,13 +65,13 @@ const VisualizarLockouts = () => {
             (
                 <>
                 {/* Campo de pesquisa */}
-                    <InputGroup mb={4} w={{ base: "100%", sm: "20rem", md: "40rem", lg: "60rem" }}>
+                    <InputGroup mb={4} w={{ base: "80%", sm: "20rem", md: "40rem", lg: "60rem" }}>
                     <InputLeftElement pointerEvents="none">
                         <FaSearch color="gray.400" />
                     </InputLeftElement>
                     <Input
                         type="text"
-                        placeholder="Pesquisar usuário..."
+                        placeholder="Pesquisar lockout..."
                         value={pesquisa}
                         onChange={(e) => setPesquisa(e.target.value)}
                     />
