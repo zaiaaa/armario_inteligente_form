@@ -122,6 +122,18 @@ const VisualizarLockouts = () => {
                     </div>
 
             
+                {/* Botão no final */}
+                    <div className="botao__div">
+                        <Button
+                            m={{ base: 6, xl: 0 }}
+                            mb={{xl: 4}}
+                            className='botao'
+                            colorScheme="green"
+                            onClick={() => navigate("/lockouts/cadastro")}
+                        >
+                            Novo Lockout
+                        </Button>
+                    </div>
         </>
             )
 
@@ -129,18 +141,6 @@ const VisualizarLockouts = () => {
         }    
 
         </div>
-        {/* Botão no final */}
-            <div className="botao__div">
-                <Button
-                    m={{ base: 6, xl: 0 }}
-                    mb={{xl: 4}}
-                    className='botao'
-                    colorScheme="green"
-                    onClick={() => navigate("/lockouts/cadastro")}
-                >
-                    Novo Lockout
-                </Button>
-            </div>
     </>
   )
 }
