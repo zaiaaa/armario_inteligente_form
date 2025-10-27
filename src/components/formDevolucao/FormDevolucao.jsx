@@ -15,9 +15,11 @@ import {
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { DialogAlert } from '../DialogAlert/DialogAlert';
 
-function FormDevolucao({ aoRevisar, lockouts = [] }) {
+function FormDevolucao({ aoRevisar, lockouts = [], uid }) {
   const [numDevolucao, setNumDevolucao] = useState(1);
+  const [lockoutSelecionado, setLockoutSelecionado] = useState(null);
   const navigate = useNavigate();
 
   function validarCampo(value) {
@@ -85,7 +87,10 @@ function FormDevolucao({ aoRevisar, lockouts = [] }) {
                       mb={3}
                     >
                       <FormLabel>Tag</FormLabel>
-                      <Select {...field} placeholder="Selecione o lockout" color="#000">
+                      <Select {...field} placeholder="Selecione o lockout" color="#000" onChange={(e) => {
+                        field.onChange(e)
+                        setLockoutSelecionado(e.target.value)
+                      }}>
                         {
                           lockouts.map((lockout, index) => (
                             <option key={index} disabled={lockout.status == "devolvido"} value={lockout.tag}>{lockout.tag} {lockout.status == "devolvido" ? "- Já devolvido!" : ""}</option>
@@ -113,6 +118,7 @@ function FormDevolucao({ aoRevisar, lockouts = [] }) {
           </Form>
         )}
       </Formik>
+      <DialogAlert lockoutSelecionado={lockoutSelecionado} uid={uid}/>
     </>
   );
 }
