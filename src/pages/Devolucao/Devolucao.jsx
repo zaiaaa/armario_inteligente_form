@@ -74,7 +74,7 @@ const Devolucao = () => {
           :(
           <>
             <p>Olá <span className='colaborador'>{usuario.nome} ({usuario.id_colaborador})</span> Seja bem-vindo ao sistema de devolução de lockouts!</p>
-            <FormDevolucao aoRevisar={ irParaRevisao } lockouts={lockouts}/>
+            <FormDevolucao aoRevisar={ irParaRevisao } lockouts={lockouts} uid={usuario.UID}/>
           </>            
           )
         }
