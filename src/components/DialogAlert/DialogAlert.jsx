@@ -12,7 +12,7 @@ import { useDisclosure, Button, useToast } from '@chakra-ui/react'
 
 import { Api } from '../../services/api'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const DialogAlert = ({lockoutSelecionado, uid}) => {
@@ -20,10 +20,12 @@ const DialogAlert = ({lockoutSelecionado, uid}) => {
   const cancelRef = React.useRef()
   const toast = useToast()
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
   //console.log(lockoutSelecionado)
     const liberacao = async () => {
 
         try{
+            setLoading(true)
             await Api.post("/status_abertura/devolucao", {
             chave: "s",
             //chave: "s" significa q a manut vai retirar apenas a CHAVE do armário, para pegar o lockout.
@@ -32,6 +34,7 @@ const DialogAlert = ({lockoutSelecionado, uid}) => {
         })
         navigate("/devolucao/sucesso")
         }catch(err){
+            setLoading(false)
             toast({
                 title: "Erro!",
                 description: {"message": err},
@@ -72,7 +75,7 @@ const DialogAlert = ({lockoutSelecionado, uid}) => {
               <Button ref={cancelRef} onClick={onClose}>
                 Cancelar
               </Button>
-              <Button colorScheme='red' onClick={liberacao} ml={3}>
+              <Button isLoading={loading} colorScheme='red' onClick={liberacao} ml={3}>
                 Abrir
               </Button>
             </AlertDialogFooter>
