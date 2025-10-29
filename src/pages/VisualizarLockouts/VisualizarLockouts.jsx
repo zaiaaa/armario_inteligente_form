@@ -12,6 +12,7 @@ import { formataData } from '../../services/formataData'
 import { useNavigate } from 'react-router-dom'
 import { FaSearch } from 'react-icons/fa'
 import "./visualizarLockouts.css"
+import { Footer } from '../../components/Footer/Footer'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
@@ -141,6 +142,8 @@ const VisualizarLockouts = () => {
         }    
 
         </div>
+
+        <Footer />
     </>
   )
 }
