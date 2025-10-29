@@ -25,7 +25,6 @@ function RevisaoDevolucao() {
         tag: lockout.tag,
         status: "devolvido",
         local: "",  
-        chave: "n"
         //chave: "n" significa q a manut vai DEVOLVER o LOCKOUT e a CHAVE.
       })
     );
