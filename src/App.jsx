@@ -15,6 +15,7 @@ import { CadastroLockout } from './pages/cadastroLockout/CadastroLockout'
 import {EditarLockout} from './pages/EditarLockout/EditarLockout'
 import { Acesso } from './pages/Acesso/Acesso'
 import { PrivateRoute } from './services/privateRoute'
+import { Sobre } from './pages/Sobre/Sobre'
 
 
 const theme = extendTheme({
@@ -57,7 +58,7 @@ function App() {
             <Route path='/usuarios' element={<Usuarios />}/>
             <Route path='/usuarios/:uid' element={<CadastroUsuario />}/>
             
-
+            <Route path='/sobre' element={<Sobre />}/>
 
             <Route path='/nao-autorizado' element={<NaoAutorizado />}/>
           </Routes>
