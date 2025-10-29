@@ -111,7 +111,7 @@ const VisualizarLockouts = () => {
                                 <>
                                     <Text color="#FF0000">Local: {lockout.local}</Text>
                                     <Divider borderColor="#000" />
-                                    <Text color="#FF0000">Data: {lockout.hora_retirada}</Text>
+                                    <Text color="#FF0000">Data: {formataData(lockout.hora_retirada)}</Text>
                                     <Divider borderColor="#000" />
                                     <Text color="#FF0000">Retirado por: {lockout.nome}</Text>
                                 </>
@@ -135,6 +135,7 @@ const VisualizarLockouts = () => {
                             Novo Lockout
                         </Button>
                     </div>
+                    <Footer />
         </>
             )
 
@@ -143,7 +144,6 @@ const VisualizarLockouts = () => {
 
         </div>
 
-        <Footer />
     </>
   )
 }
