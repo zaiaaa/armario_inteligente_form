@@ -3,7 +3,7 @@ import { Box, Text, Flex, Link, VStack, HStack } from '@chakra-ui/react';
 const Footer = () => {
   return (
     <Box
-      bg="gray.900"
+      bg="#0D0D0D"
       color="white"
       py={8}
       px={{ base: 4, md: 16 }}
@@ -15,31 +15,29 @@ const Footer = () => {
         align={{ base: 'flex-start', md: 'center' }}
       >
         {/* Sobre */}
-        <VStack align="flex-start" spacing={2} mb={{ base: 4, md: 0 }}>
-          <Text fontWeight="bold" fontSize="lg">
+        <VStack align="center" spacing={2} mb={{ base: 4, md: 0 }} w={"100%"} >
+          <Text fontWeight="bold" fontSize="lglg" color={"#FF0000"} >
             Armário Inteligente Toyota
-          </Text>
-          <Text fontSize="sm" maxW="400px">
-            O Armário Inteligente da Toyota permite controle e devolução de lockouts de forma segura e eficiente, facilitando o gerenciamento de ferramentas e dispositivos dentro da empresa.
           </Text>
         </VStack>
 
         {/* Links úteis */}
-        <HStack spacing={6}>
-          <Link href="#" fontSize="sm" _hover={{ textDecoration: 'underline' }}>
-            Política de Privacidade
-          </Link>
-          <Link href="#" fontSize="sm" _hover={{ textDecoration: 'underline' }}>
-            Termos de Uso
-          </Link>
-          <Link href="#" fontSize="sm" _hover={{ textDecoration: 'underline' }}>
-            Contato
-          </Link>
-        </HStack>
+        <Flex w="100%" justify="space-around" align="center" mt={2}>
+            <Link href="#" fontSize="sm" _hover={{ textDecoration: 'underline' }} color="#fff">
+                Sobre
+            </Link>
+            <Link href="#" fontSize="sm" _hover={{ textDecoration: 'underline' }} color="#fff">
+                Manual de Uso
+            </Link>
+            <Link href="#" fontSize="sm" _hover={{ textDecoration: 'underline' }} color="#fff">
+                Contato
+            </Link>
+        </Flex>
+
       </Flex>
 
       {/* Copyright */}
-      <Text fontSize="xs" textAlign="center" mt={6} color="gray.400">
+      <Text fontSize="xs" textAlign="center" mt={6} color="#fff">
         &copy; {new Date().getFullYear()} Toyota Armário Inteligente. Todos os direitos reservados.
       </Text>
     </Box>
