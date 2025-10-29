@@ -23,7 +23,7 @@ const Footer = () => {
 
         {/* Links úteis */}
         <Flex w="100%" justify="space-around" align="center" mt={2}>
-            <Link href="#" fontSize="sm" _hover={{ textDecoration: 'underline' }} color="#fff">
+            <Link href="/sobre" fontSize="sm" _hover={{ textDecoration: 'underline' }} color="#fff">
                 Sobre
             </Link>
             <Link href="#" fontSize="sm" _hover={{ textDecoration: 'underline' }} color="#fff">
