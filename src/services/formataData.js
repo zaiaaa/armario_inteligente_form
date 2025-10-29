@@ -6,7 +6,7 @@ function formataData(data_hora){
     dayjs.extend(utc)
     dayjs.extend(timezone)
     
-    return dayjs.utc(data_hora).tz("America/Sao_Paulo").format('DD/MM/YYYY HH:mm')
+    return dayjs.utc(data_hora).format('DD/MM/YYYY HH:mm')
 }
 
 export {formataData}
