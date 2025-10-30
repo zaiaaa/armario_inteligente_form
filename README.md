@@ -1,12 +1,15 @@
-# React + Vite
+# Formulário Web para o armário de Lockouts PT/ED
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Funciona como validador de abertura para a retirada de lockouts ou a devolução dos mesmos.
 
-Currently, two official plugins are available:
+Este formulário está presente em:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Norma Operacional](https://armario-inteligente.vercel.app/assets/norma-CR9JcW56.pdf)
+- [Backend](https://github.com/zaiaaa/api_armario_inteligente)
+- [Firmware](https://github.com/zaiaaa/armario_inteligente_arduino)
 
-## Expanding the ESLint configuration
+## Tecnologias Utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React + Vite
+
+
