@@ -22,7 +22,7 @@ const Carrossel = ({imagens = []}) => {
 //   ];
 
   return (
-    <Box w="100%" maxW="1200px" maxH={"300px"} m="auto" mt={10} borderRadius="md" overflow="hidden" shadow="md" mb={4}>
+    <Box w="100%" maxW="1200px" h={"100%"} maxH={"300px"} m="auto" mt={10} borderRadius="md" overflow="hidden" shadow="md" mb={4}>
       <Slider {...settings}>
         {imagens.map((img, i) => (
           <Box key={i} position="relative">
