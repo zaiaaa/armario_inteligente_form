@@ -1,4 +1,5 @@
 import { Box, Text, Flex, Link, VStack, HStack } from '@chakra-ui/react';
+import norma from "../../assets/norma.pdf"
 
 const Footer = () => {
   return (
@@ -26,11 +27,11 @@ const Footer = () => {
             <Link href="/sobre" fontSize="sm" _hover={{ textDecoration: 'underline' }} color="#fff">
                 Sobre
             </Link>
-            <Link href="#" fontSize="sm" _hover={{ textDecoration: 'underline' }} color="#fff">
+            <Link href={norma} target='_blank' fontSize="sm" _hover={{ textDecoration: 'underline' }} color="#fff">
                 Manual de Uso
             </Link>
-            <Link href="#" fontSize="sm" _hover={{ textDecoration: 'underline' }} color="#fff">
-                Contato
+            <Link href="https://github.com/zaiaaa/armario_inteligente_form" target='_blank' fontSize="sm" _hover={{ textDecoration: 'underline' }} color="#fff">
+                Github
             </Link>
         </Flex>
 
