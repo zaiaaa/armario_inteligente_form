@@ -14,8 +14,8 @@ import {Footer} from "../../components/Footer/Footer"
 
 const Sobre = () => {
   const integrantes = [
-    { nome: 'Gustavo Zaia', papel: 'Desenvolvedor Frontend', foto: zaia },
-    { nome: 'João Pedro', papel: 'Desenvolvedora Backend', foto: joao },
+    { nome: 'Gustavo Zaia', papel: 'Desenvolvedor Fullstack', foto: zaia },
+    { nome: 'João Pedro', papel: 'Desenvolvedor Backend', foto: joao },
     { nome: 'Gabrielly Leão', papel: 'Designer UI/UX', foto: gabi },
     { nome: 'Alisson Cauã', papel: 'Designer UI/UX', foto: alisson },
     // adicione outros integrantes aqui
@@ -27,11 +27,11 @@ const Sobre = () => {
         <NavBar nomePagina='SISTEMA'/>
         
         <Box className='content'>
+        {/* <Image src={bg_armario}></Image> */}
         <Carrossel imagens={[{ src: bg_armario, legenda: "Controle inteligente de lockouts" },
         { src: furo, legenda: "Instalação complexa" },
         { src: trava, legenda: "Bloqueio seguro" },
         ]}/>
-        {/* <Image src={bg_armario}></Image> */}
         {/* Título */}
         
         <VStack spacing={4} mb={10} align="center">
