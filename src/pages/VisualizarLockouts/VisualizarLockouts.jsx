@@ -135,14 +135,19 @@ const VisualizarLockouts = () => {
                             Novo Lockout
                         </Button>
                     </div>
-                    <Footer />
         </>
             )
-
-        
+            
+            
         }    
 
         </div>
+        {
+            !loading ? 
+            <Footer />
+            :
+            ""
+        }
 
     </>
   )
