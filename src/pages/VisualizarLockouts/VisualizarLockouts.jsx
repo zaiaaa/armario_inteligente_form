@@ -4,8 +4,8 @@ import {
   Card, CardBody, Image, Stack, InputLeftElement,
   Heading, Text, Divider, Button, Input, InputGroup
 } from '@chakra-ui/react'
-import lockoutDisponivel from "../../assets/lockout_disponivel.png"
-import lockoutIndisponivel from "../../assets/lockout_indisponivel.png"
+import lockoutDisponivel from "../../assets/lockout_disponivel.webp"
+import lockoutIndisponivel from "../../assets/lockout_indisponivel.webp"
 import { Api } from '../../services/api'
 import { Loading } from '../../components/Loading/Loading'
 import dayjs from 'dayjs'
