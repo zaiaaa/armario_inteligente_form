@@ -112,6 +112,7 @@ const VisualizarLockouts = () => {
                       src={lockout.status === "devolvido" ? lockoutDisponivel : lockoutIndisponivel}
                       alt={lockout.status === "devolvido" ? "Lockout Disponível" : "Lockout Indisponível"}
                       borderRadius='lg'
+                      loading="lazy"
                     />
                     <Stack mt='6' spacing='3'>
                       <Heading size='lg' textAlign={"center"}>TAG {lockout.tag}</Heading>
