@@ -2,13 +2,10 @@ import React, { useEffect } from 'react'
 import {NavBar} from '../../components/NavBar/NavBar'
 import { useState } from 'react'
 import { FormRetirada } from '../../components/formRetirada/FormRetirada'
-import { RevisaoRetirada } from '../RevisaoRetirada/RevisaoRetirada'
 import "./retirada.css"
-import { Button } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { Api } from '../../services/api'
 import { Loading } from '../../components/Loading/Loading'
-import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 const Retirada = () => {
   const navigate = useNavigate()
