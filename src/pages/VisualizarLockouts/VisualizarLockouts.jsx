@@ -112,7 +112,8 @@ const VisualizarLockouts = () => {
                       src={lockout.status === "devolvido" ? lockoutDisponivel : lockoutIndisponivel}
                       alt={lockout.status === "devolvido" ? "Lockout Disponível" : "Lockout Indisponível"}
                       borderRadius='lg'
-                      loading="lazy"
+                      fetchPriority="high"
+                      loading={index === 0 ? "eager" : "lazy"} // carrega rápido só o primeiro
                     />
                     <Stack mt='6' spacing='3'>
                       <Heading size='lg' textAlign={"center"}>TAG {lockout.tag}</Heading>
