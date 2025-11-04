@@ -112,7 +112,7 @@ const VisualizarLockouts = () => {
                       src={lockout.status === "devolvido" ? lockoutDisponivel : lockoutIndisponivel}
                       alt={lockout.status === "devolvido" ? "Lockout Disponível" : "Lockout Indisponível"}
                       borderRadius='lg'
-                      fetchPriority="high"
+                      fetchPriority={index === 0 ? "high" : "auto"} // só o primeiro card
                       loading={index === 0 ? "eager" : "lazy"} // carrega rápido só o primeiro
                     />
                     <Stack mt='6' spacing='3'>
