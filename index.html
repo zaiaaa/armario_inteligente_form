@@ -3,76 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/src/assets/64px-Toyota_logo_(Red).svg.png" />
-
-    <!-- 🌐 Pré-conexão com domínios críticos -->
+    
+    <!-- 🔗 Pré-conexão com a API -->
     <link rel="preconnect" href="https://api-armario-inteligente.onrender.com" />
     <link rel="dns-prefetch" href="https://api-armario-inteligente.onrender.com" />
 
+    <style>
+      * {
+          font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          color: #000;
+        }
+
+        body{
+          background-color: #F2F2F2;
+        }
+        .content{
+            margin-top: 118px;
+        }
+
+        .colaborador{
+            color: red;
+        }
+
+        #root {
+          width: 100%;
+          height: 100%;
+        }
+
+    </style>
+
+    <!-- link de fonte -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- 🔠 Fontes carregadas de forma não bloqueante -->
+    
     <link
-      rel="preload"
-      as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      onload="this.rel='stylesheet'"
-    >
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    >    <!-- link de fonte -->
+
+    <!-- Fallback caso as fontes demorem -->
     <noscript>
       <link
-        rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
       >
     </noscript>
 
-    <!-- 🧩 CSS crítico inline (mantém estilo básico sem bloquear renderização) -->
-    <style>
-      :root {
-        color-scheme: light;
-      }
-      * {
-        font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        color: #000;
-      }
-      body {
-        background-color: #F2F2F2;
-      }
-      #root {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .content {
-        margin-top: 118px;
-      }
-      .colaborador {
-        color: red;
-      }
-
-      /* 👇 pré-loader leve para reduzir sensação de espera */
-      #root::before {
-        content: "Carregando...";
-        color: #555;
-        font-size: 1rem;
-        margin-top: 50px;
-      }
-    </style>
-
-    <!-- ⚡ Pré-carrega o bundle principal sem bloquear -->
-    <link rel="preload" href="/src/main.jsx" as="script" />
 
     <meta name="description" content="Sistema de armário inteligente para controle de lockouts. Faça devolução e retirada de forma rápida e segura.">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulário de Lockouts</title>
   </head>
   <body>
     <div id="root"></div>
-    <!-- 🧠 Script principal carregado como módulo (não bloqueante) -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
