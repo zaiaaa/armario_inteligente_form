@@ -10,7 +10,6 @@ import {
   useToast
 } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
-import './formCadastraUsuario.css'
 import { Api } from '../../services/api'
 import { toTitleCase } from '../../services/toTitleCase'
 
