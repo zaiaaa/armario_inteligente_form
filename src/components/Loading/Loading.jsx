@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { Spinner } from '@chakra-ui/react'; // ou qualquer outro fallback leve
 
 // Lazy import do Lottie

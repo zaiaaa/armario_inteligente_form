@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Text } from '@chakra-ui/react'
 import { formataData } from '../../services/formataData'
 import { useNavigate } from 'react-router-dom'

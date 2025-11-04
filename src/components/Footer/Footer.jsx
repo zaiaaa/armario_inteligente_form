@@ -1,4 +1,4 @@
-import { Box, Text, Flex, Link, VStack, HStack } from '@chakra-ui/react';
+import { Box, Text, Flex, Link, VStack } from '@chakra-ui/react';
 import norma from "../../assets/norma.pdf"
 
 const Footer = () => {

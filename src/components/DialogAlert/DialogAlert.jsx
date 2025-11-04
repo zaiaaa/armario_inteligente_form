@@ -5,7 +5,6 @@ import {
   AlertDialogHeader,
   AlertDialogContent,
   AlertDialogOverlay,
-  AlertDialogCloseButton,
 } from '@chakra-ui/react'
 
 import { useDisclosure, Button, useToast } from '@chakra-ui/react'

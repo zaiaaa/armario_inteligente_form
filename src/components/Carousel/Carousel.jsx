@@ -1,6 +1,6 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Box, Image, Text, Heading } from "@chakra-ui/react";
+import { Box, Image, Text } from "@chakra-ui/react";
 import Slider from "react-slick";
 
 const Carrossel = ({imagens = []}) => {

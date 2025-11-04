@@ -1,4 +1,3 @@
-import React from 'react'
 import "./navbar.css"
 import { Heading } from '@chakra-ui/react'
 import toyota_logo from "../../assets/toyota_logo_nav.png"

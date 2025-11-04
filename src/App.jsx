@@ -13,7 +13,6 @@ import Usuarios from './pages/Usuarios/Usuarios'
 import { CadastroUsuario } from './pages/CadastroUsuario/CadastroUsuario'
 import { CadastroLockout } from './pages/cadastroLockout/CadastroLockout'
 import {EditarLockout} from './pages/EditarLockout/EditarLockout'
-import { Acesso } from './pages/Acesso/Acesso'
 import { PrivateRoute } from './services/privateRoute'
 import { Sobre } from './pages/Sobre/Sobre'
 
