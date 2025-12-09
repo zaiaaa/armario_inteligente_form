@@ -16,7 +16,7 @@ import { useEffect, useState } from 'react'
 
 const FormEditaUsuario = ({ uidColaborador }) => {
     const navigate = useNavigate()
-    const [currentUser, setCurrentUser] = useState([])
+    const [currentUser, setCurrentUser] = useState(null)
     const [loading, setLoading] = useState(false)
     const toast = useToast();
 
@@ -28,7 +28,7 @@ const FormEditaUsuario = ({ uidColaborador }) => {
           }
         }
         handleGetUser()
-      }, [])
+      }, [uidColaborador])
     
     const excluirUsuario = async () => {
         try{
