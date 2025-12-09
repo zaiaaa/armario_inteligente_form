@@ -31,7 +31,7 @@ const CadastroUsuario = () => {
     <NavBar nomePagina='USUÁRIOS'/>
     <div className="content">
         {
-          !userExiste ?
+          userExiste ?
           <FormCadastraUsuario uidColaborador={uid} />
           :
           <FormEditaUsuario uidColaborador={uid} />
