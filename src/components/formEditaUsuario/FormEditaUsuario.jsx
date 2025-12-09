@@ -93,9 +93,9 @@ const FormEditaUsuario = ({ uidColaborador }) => {
     <Formik
       initialValues={{
         uid: uidColaborador || '',
-        first_name: currentUser.nome.split()[0] | '',
-        id_colaborador: currentUser.id_colaborador,
-        last_name: currentUser.nome.split()[1] || '',
+        first_name: currentUser?.nome?.split()[0] || '',
+        id_colaborador: currentUser?.id_colaborador || '',
+        last_name: currentUser?.nome?.split()[1] || '',
         setor: "Manut T" | ''
       }}
       onSubmit={async (values, actions) => {
