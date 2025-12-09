@@ -23,7 +23,7 @@ const FormEditaUsuario = ({ uidColaborador }) => {
     useEffect(() => {
         const handleGetUser = async () => {
           const currentUser = await Api.get(`/usuarios/${uidColaborador}`)
-          if(userExiste.length > 0){
+          if(currentUser.data.length > 0){
             setCurrentUser(currentUser.data[0])
           }
         }
