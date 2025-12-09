@@ -9,7 +9,7 @@ const PrivateRoute = ({children}) => {
 
   const senha = sessionStorage.getItem('senha');
     
-  return senha === "ManutT05" ? children : <Acesso />
+  return senha === "77541" ? children : <Acesso />
 
 };
 
