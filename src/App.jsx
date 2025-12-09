@@ -45,7 +45,12 @@ function App() {
             <Route path='/devolucao/erro' element={<Erro />}/>
 
             <Route path='/lockouts' element={<VisualizarLockouts />}/>
-            <Route path='/lockouts/cadastro' element={<CadastroLockout />}/>
+            <Route path='/lockouts/cadastro' element={
+              <PrivateRoute>
+                <CadastroLockout />
+              </PrivateRoute>
+            }
+              />
 
             <Route path='/lockouts/editar/:tag' element={
               <PrivateRoute>
@@ -55,7 +60,13 @@ function App() {
               }/>
 
             <Route path='/usuarios' element={<Usuarios />}/>
-            <Route path='/usuarios/:uid' element={<CadastroUsuario />}/>
+            <Route path='/usuarios/:uid' element={
+              <PrivateRoute>
+                <CadastroUsuario />
+              </PrivateRoute>
+              }
+              
+              />
             
             <Route path='/sobre' element={<Sobre />}/>
 
