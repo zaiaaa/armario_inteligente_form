@@ -11,13 +11,21 @@ const CadastroUsuario = () => {
   const [userExiste, setUserExiste] = useState(false)
   useEffect(() => {
     const handleGetUser = async () => {
-      const userExiste = await Api.get(`/usuarios/${uid}`)
-      if(userExiste.length > 0){
-        setUserExiste(true)
+      try{
+        const userExiste = await Api.get(`/usuarios/${uid}`)
+        if(userExiste.data.length > 0){
+          setUserExiste(true)
+        }
+      }catch (error) {
+        setUserExiste(false)
       }
+
     }
-    handleGetUser()
-  }, [])
+
+    if(uid){
+      handleGetUser()
+    }
+  }, [uid])
   return (
     <>
     <NavBar nomePagina='USUÁRIOS'/>
