@@ -50,6 +50,7 @@ const CardUsuarios = ({usuario = {}}) => {
         p={3}
         w="80%"
         mb={4}
+        onClick={handleClick}
         >
         <Text>
             Nome:{" "}
