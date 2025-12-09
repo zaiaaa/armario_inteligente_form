@@ -16,15 +16,15 @@ import { useEffect, useState } from 'react'
 
 const FormEditaUsuario = ({ uidColaborador }) => {
     const navigate = useNavigate()
-    const [currentUser, setCurrentUser] = useState(null)
+    const [currentUser, setCurrentUser] = useState([])
     const [loading, setLoading] = useState(false)
     const toast = useToast();
 
     useEffect(() => {
         const handleGetUser = async () => {
           const currentUser = await Api.get(`/usuarios/${uidColaborador}`)
-          if(currentUser.data.length > 0){
-            setCurrentUser(currentUser.data[0])
+          if(currentUser.data){
+            setCurrentUser(currentUser.data)
           }
         }
         handleGetUser()
@@ -49,6 +49,10 @@ const FormEditaUsuario = ({ uidColaborador }) => {
         }
 
 
+    }
+
+    const voltaFunction = () => {
+        navigate("/usuarios")
     }
 
   function validarCampo(value) {
@@ -89,6 +93,8 @@ const FormEditaUsuario = ({ uidColaborador }) => {
   
   }
 
+  console.log(currentUser)
+
   return (
     <Formik
       enableReinitialize
@@ -97,7 +103,7 @@ const FormEditaUsuario = ({ uidColaborador }) => {
         first_name: currentUser?.nome?.split(' ')[0] || '',
         id_colaborador: currentUser?.id_colaborador || '',
         last_name: currentUser?.nome?.split(' ')[1] || '',
-        setor: currentUser?.setor || "Manut T"
+        setor: "Manut T" || ''
       }}
       onSubmit={async (values, actions) => {
         await handleUser(values)
@@ -218,6 +224,19 @@ const FormEditaUsuario = ({ uidColaborador }) => {
           >
             Excluir usuário
           </Button>
+
+          <Button
+            mt={4}
+            ml={5}
+            mb={10}
+            colorScheme="yellow"
+            isLoading={loading}
+            type="button"
+            onClick={voltaFunction}
+          >
+            Voltar
+          </Button>
+
 
         </Form>
       )}
