@@ -97,7 +97,7 @@ const FormEditaUsuario = ({ uidColaborador }) => {
         first_name: currentUser?.nome?.split(' ')[0] || '',
         id_colaborador: currentUser?.id_colaborador || '',
         last_name: currentUser?.nome?.split(' ')[1] || '',
-        setor: "Manut T" || ''
+        setor: currentUser?.setor || "Manut T"
       }}
       onSubmit={async (values, actions) => {
         await handleUser(values)
