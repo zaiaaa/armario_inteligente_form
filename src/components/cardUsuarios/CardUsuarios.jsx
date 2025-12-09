@@ -50,7 +50,7 @@ const CardUsuarios = ({usuario = {}}) => {
         p={3}
         w="80%"
         mb={4}
-                cursor="pointer"
+        cursor="pointer"
         transition="all 0.2s"
         _hover={{
           boxShadow: 'lg',
