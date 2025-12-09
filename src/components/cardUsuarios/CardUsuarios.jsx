@@ -50,6 +50,14 @@ const CardUsuarios = ({usuario = {}}) => {
         p={3}
         w="80%"
         mb={4}
+                cursor="pointer"
+        transition="all 0.2s"
+        _hover={{
+          boxShadow: 'lg',
+          transform: 'scale(1.02)',
+          backgroundColor: 'rgba(68, 255, 0, 0.23)',
+        }}
+
         onClick={handleClick}
         >
         <Text>
